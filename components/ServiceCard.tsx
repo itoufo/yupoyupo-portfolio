@@ -1,54 +1,68 @@
 import type { Service } from '@/lib/services'
 
-const colorClasses = {
-  blue: {
-    border: 'border-blue-200 dark:border-blue-900',
-    bg: 'bg-blue-50 dark:bg-blue-950/50',
-    text: 'text-blue-600 dark:text-blue-400',
-    button: 'bg-blue-600 hover:bg-blue-700',
-  },
-  purple: {
-    border: 'border-purple-200 dark:border-purple-900',
-    bg: 'bg-purple-50 dark:bg-purple-950/50',
-    text: 'text-purple-600 dark:text-purple-400',
-    button: 'bg-purple-600 hover:bg-purple-700',
-  },
-  emerald: {
-    border: 'border-emerald-200 dark:border-emerald-900',
-    bg: 'bg-emerald-50 dark:bg-emerald-950/50',
-    text: 'text-emerald-600 dark:text-emerald-400',
-    button: 'bg-emerald-600 hover:bg-emerald-700',
-  },
-}
-
 interface ServiceCardProps {
   service: Service
+  index: number
 }
 
-export function ServiceCard({ service }: ServiceCardProps) {
-  const colors = colorClasses[service.color]
-
+export function ServiceCard({ service, index }: ServiceCardProps) {
   return (
-    <div
-      className={`rounded-2xl border-2 ${colors.border} ${colors.bg} p-8 transition-all hover:scale-[1.02] hover:shadow-lg`}
-    >
-      <h3 className={`text-2xl font-bold ${colors.text} mb-4`}>
-        {service.name}
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-        {service.description}
-      </p>
-      <a
-        href={service.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`inline-flex items-center gap-2 px-5 py-2.5 ${colors.button} text-white font-medium rounded-lg transition-colors`}
-      >
-        サービスを見る
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-      </a>
+    <div className="group relative">
+      {/* Glow effect on hover */}
+      <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
+
+      <div className="relative p-8 md:p-10 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-all duration-500 overflow-hidden">
+        {/* Background number */}
+        <div className="absolute -right-8 -top-8 text-[200px] font-black text-white/[0.02] select-none pointer-events-none">
+          {String(index + 1).padStart(2, '0')}
+        </div>
+
+        <div className="relative z-10">
+          {/* Header */}
+          <div className="flex items-start justify-between mb-6">
+            <div>
+              <span className="text-4xl mb-4 block">{service.icon}</span>
+              <h3 className={`text-2xl md:text-3xl font-black bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                {service.name}
+              </h3>
+              <p className="text-sm text-gray-500 font-mono mt-1">
+                {service.tagline}
+              </p>
+            </div>
+
+            <a
+              href={service.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-3 rounded-xl bg-gradient-to-r ${service.gradient} opacity-80 hover:opacity-100 transition-all hover:scale-110 hover:shadow-lg`}
+            >
+              <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Description */}
+          <p className="text-gray-400 leading-relaxed mb-8 text-lg">
+            {service.description}
+          </p>
+
+          {/* Features */}
+          <div className="flex flex-wrap gap-2">
+            {service.features.map((feature) => (
+              <span
+                key={feature}
+                className="px-3 py-1.5 text-xs font-mono text-gray-400 bg-white/5 border border-white/10 rounded-lg"
+              >
+                {feature}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Decorative line */}
+        <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      </div>
     </div>
   )
 }
