@@ -12,30 +12,30 @@ export function Header() {
   }, [])
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="#" className="group flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center font-black text-black">
+          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center font-black text-black text-lg">
             Y
           </div>
-          <span className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors">
+          <span className="text-xl font-black text-white group-hover:text-cyan-400 transition-colors">
             ゆぽゆぽ
           </span>
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#services" className="text-sm text-gray-400 hover:text-white transition-colors font-mono">
+        <nav className="hidden md:flex items-center gap-10">
+          <a href="#services" className="text-sm text-gray-300 hover:text-cyan-400 transition-colors font-bold tracking-wider">
             SERVICES
           </a>
-          <a href="#about" className="text-sm text-gray-400 hover:text-white transition-colors font-mono">
-            ABOUT
+          <a href="https://www.taolis.net" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-300 hover:text-cyan-400 transition-colors font-bold tracking-wider">
+            TAOLIS
           </a>
         </nav>
 
         {mounted && (
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-lg border border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
+            className="p-3 rounded-xl border-2 border-white/20 hover:border-cyan-400 hover:bg-cyan-500/20 transition-all"
             aria-label="テーマ切り替え"
           >
             {theme === 'dark' ? (
