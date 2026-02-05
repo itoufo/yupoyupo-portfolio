@@ -102,3 +102,17 @@ body {
 .card-glow:hover {
   box-shadow: 0 0 60px rgba(0, 245, 255, 0.2), 0 0 100px rgba(168, 85, 247, 0.15);
 }
+
+/* Timeline dot pulse */
+@keyframes timeline-pulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(0, 245, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 1);
+  }
+}
+
+.timeline-dot {
+  animation: timeline-pulse 3s ease-in-out infinite;
+}
