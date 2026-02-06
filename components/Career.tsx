@@ -368,6 +368,8 @@ function SideProjectsSection() {
   const { ref, isInView } = useInView()
 
   const tagIcons: Record<string, string> = {
+    COMMUNITY: '👥',
+    EDUCATION: '🎓',
     TOOL: '🔧',
     SECURITY: '🔐',
     AI: '🤖',

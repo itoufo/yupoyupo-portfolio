@@ -111,6 +111,24 @@ export const profile = {
   // サイドプロジェクト
   sideProjects: [
     {
+      title: 'AIフレンズ',
+      description: '継続率90%のAI学習コミュニティ。学びが続く仕組みを設計し、仲間と共に成長する場。',
+      url: 'https://aifriends.jp/',
+      tag: 'COMMUNITY',
+    },
+    {
+      title: 'Digitech Quest',
+      description: '産学連携DXプログラム。満足度4.8/5、97%が「キャリアに活かせる」と回答。全国展開中。',
+      url: 'https://digitech.quest/',
+      tag: 'EDUCATION',
+    },
+    {
+      title: '新人類育成計画',
+      description: 'AIプログラミング2日間合宿。従来3年の学習を2日に圧縮する、常識破壊の教育メソッド。',
+      url: 'https://two-day-ai-camp.netlify.app/',
+      tag: 'EDUCATION',
+    },
+    {
       title: 'LLMOSEO診断ツール',
       description: 'LLM時代のSEO対策を診断。AIに選ばれるコンテンツかどうかを可視化する。',
       url: 'https://llmoseo.netlify.app/',
